@@ -1,0 +1,10 @@
+/* pages/checkRecord/checkRecord.wxss */
+.button {
+  width: 150px;
+  float:left;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}

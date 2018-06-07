@@ -1,0 +1,28 @@
+<view>
+  <view>
+    <text>药店名称:</text>
+    <input type='text'>{{name}}</input>
+  </view>
+  <view>
+    <text>药店编码:</text>
+    <input type='text'>{{code}}</input>
+  </view>
+  <view>
+    <text>是否录随访人员:</text>
+    <input type='text'>{{isFollow}}</input>
+  </view>
+  <view>
+    <text>随访人员:</text>
+    <input type='text'>{{followName}}</input>
+  </view>
+
+  <view>
+    <text>OTC代表:</text>
+    <text>陈斯泉</text>
+  </view>
+
+</view>
+
+<view>
+<button bindtap='enter'>进入店铺</button>
+</view>

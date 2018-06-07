@@ -1,0 +1,25 @@
+<!--pages/login/index.wxml-->
+<!--<text>pages/login/index.wxml</text>-->
+<view class="section">
+   <input class="login-input-text" type="text"  placeholder="登录账号" auto-focus></input>
+</view>
+
+<view class="section">
+   <input class="login-input-text" type="password"  placeholder="登录密码" auto-focus></input>
+</view>
+
+<view class="section">
+   <input class="login-input-text" type="text"  placeholder="随访人员" auto-focus></input>
+</view>
+
+<view class="section">
+  <picker class= "picker" bindchange="onMonitorTypeChanged" placeholder="巡店模式" value="{{monitorTypeIndex}}" range="{{monitorType}}">
+    <view class="picker">
+      巡店模式：{{monitorType[monitorTypeIndex]}}
+    </view>
+  </picker>
+</view>
+
+<view class="section">
+   <button bindtap="login">登录</button>
+</view>

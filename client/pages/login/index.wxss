@@ -1,0 +1,13 @@
+/* pages/login/index.wxss */
+.login-input-text {
+  border: darkgray 1px solid;
+  padding: 2px;
+}
+
+.section {
+  margin: 5px;
+}
+
+.picker {
+  border: darkgray 1px solid;
+}

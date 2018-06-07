@@ -1,0 +1,51 @@
+<!--pages/checkRecord/checkRecord.wxml-->
+
+
+<view class='clear'>
+  <view>
+    <input class='input-text' type='text' placeholder='药品条码' value='{{scanCode}}'></input>
+    <button bindtap='scan'>识别</button>
+  </view>
+  <view>
+    <input class='input-text' type='text' placeholder='药品编码' value='{{code}}' ></input>
+    <button>查询库存</button>
+  </view>
+  <view>
+    <input class='input-text' type='text' placeholder='药品名称' value='{{name}}'></input>
+  </view>
+  <view>
+    <input class='input-text' type='text' placeholder='批号' value='{{batchNumber}}'></input>
+  </view>
+  <view>
+    <input type='text' placeholder='陈列面' ></input>
+    <picker class= "picker" bindchange="onCLMChanged" placeholder="陈列面" value="{{CLMIndex}}" range="{{CLM}}">
+      <view class="picker">
+        陈列面：{{CLM[CLMIndex]}}
+      </view>
+    </picker>
+  </view>
+  <view>
+    <picker class= "picker" bindchange="onCLWZChanged" placeholder="陈列位置" value="{{CLWZIndex}}" range="{{CLWZ}}">
+      <view class="picker">
+        陈列位置：{{CLWZ[CLWZIndex]}}
+      </view>
+    </picker>
+  </view>
+  <view>
+    <input class='input-text' type='digit' placeholder='价格' value='{{price}}'></input>
+  </view>
+  <view>
+    <input class='input-text' type='text' placeholder='陈列库存' value='{{storage}}'></input>
+  </view>
+  <view>
+    <input class='input-text' type='text' placeholder='监管码' value='{{monitorCode}}'></input>
+     <button>识别</button>
+  </view>
+</view>
+
+<view>
+  <button class='button'>保存继续采集</button>
+  <button class='button' bindtap='takePhoto'>拍照</button>
+  <button class='button'>进入其他店铺</button>
+  <button class='button'>保存退出</button>
+</view>

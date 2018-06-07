@@ -1,0 +1,20 @@
+<view><text>经度： {{ location.longitude }}</text></view>
+
+<view><text>维度： {{ location.latitude }}</text></view>
+
+<view><text>地址：  {{ location.address }}</text></view>
+
+<view>
+  <scroll-view scroll-y="true">
+    <view wx:for="{{storeList}}" wx:for-index="idx" wx:for-item="store">
+      <navigator url="../store/store?id={{store.order}}" hover-class="navigator-hover">
+        <text class="store-text">{{store.order}}</text>
+        <text class="store-text">{{store.isSubject}}</text>
+        <text class="store-text">{{store.name}}</text>
+      </navigator>
+    </view>
+  </scroll-view>
+</view>
+
+
+

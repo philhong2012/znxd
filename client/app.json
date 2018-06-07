@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/index/index",
+    "pages/addCgi/addCgi",
+    "pages/location/location",
+    "pages/store/store",
+    "pages/checkRecord/checkRecord"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "智能巡店",
+    "navigationBarTextStyle": "black"
+  }
+}

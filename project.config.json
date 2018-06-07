@@ -1,0 +1,15 @@
+{
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"appid": "wxb16636012323a48a",
+	"projectname": "znxd",
+	"compileType": "miniprogram",
+	"condition": {}
+}

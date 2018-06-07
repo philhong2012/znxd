@@ -1,0 +1,22 @@
+/**app.wxss**/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+
+
+/* pages/login/index.wxss */
+.input-text {
+  border: darkgray 1px solid;
+  padding: 2px;
+}
+
+.section {
+  margin: 5px;
+}
+
+.picker {
+  border: darkgray 1px solid;
+}
