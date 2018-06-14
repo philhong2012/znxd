@@ -1,4 +1,9 @@
 // pages/login/index.js
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
+var config = require('../../config')
+var util = require('../../utils/util.js')
+
+
 Page({
 
   /**
@@ -22,7 +27,17 @@ Page({
 
   login: function() {
     //获取数据，调用后台，成功后，进入功能首页
-    wx.navigateTo({ url:'../location/location'});
+    //wx.navigateTo({ url:'../location/location'});
+    wx.request({
+      url: config.service.helloWorld, 
+      data: null,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
   },
 
   /**
