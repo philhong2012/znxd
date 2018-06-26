@@ -9,12 +9,16 @@
   </view>
   <view>
     <text>是否录随访人员:</text>
-    <input type='text'>{{isFollow}}</input>
+     <switch checked bindchange="switchflowChange"/>
   </view>
-  <view>
-    <text>随访人员:</text>
-    <input type='text'>{{followName}}</input>
-  </view>
+
+  <block wx:if="{{hideFollwerInput}}">
+    <view>
+      <text>随访人员:</text>
+      <input type='text'>{{followName}}</input>
+    </view>
+  </block>
+  
 
   <view>
     <text>OTC代表:</text>

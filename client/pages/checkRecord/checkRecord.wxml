@@ -1,6 +1,6 @@
 <!--pages/checkRecord/checkRecord.wxml-->
 
-
+<form bindsubmit="formSubmit" bindreset="formReset">
 <view class='clear'>
   <view>
     <input class='input-text' type='text' placeholder='药品条码' value='{{scanCode}}'></input>
@@ -49,3 +49,4 @@
   <button class='button'>进入其他店铺</button>
   <button class='button'>保存退出</button>
 </view>
+</form>

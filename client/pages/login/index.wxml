@@ -1,11 +1,12 @@
 <!--pages/login/index.wxml-->
 <!--<text>pages/login/index.wxml</text>-->
+<form bindsubmit="formSubmit" bindreset="formReset">
 <view class="section">
-   <input class="login-input-text" type="text"  placeholder="登录账号" auto-focus></input>
+   <input class="login-input-text" name="floginid" value='{{floginid}}' type="text"  placeholder="登录账号" auto-focus></input>
 </view>
 
 <view class="section">
-   <input class="login-input-text" type="password"  placeholder="登录密码" auto-focus></input>
+   <input class="login-input-text" name="fpassword" value='{{fpassword}}' type="password"  placeholder="登录密码" auto-focus></input>
 </view>
 
 <view class="section">
@@ -21,5 +22,6 @@
 </view>
 
 <view class="section">
-   <button bindtap="login">登录</button>
+   <button form-type='submit'>登录</button>
 </view>
+</form>

@@ -4,7 +4,7 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 var host = 'https://gvxbkhpr.qcloud.la';
-var myHost = 'http://localhost:8090';
+var myHost = 'http://localhost:9001';
 
 var config = {
 
@@ -15,6 +15,10 @@ var config = {
         myHost,
 
         helloWorld: `${myHost}/api/helloWorld`,
+
+        loginUrl2:`${myHost}/user/login?debug`,
+
+        nearbyStores: `${myHost}/drugstore/nearBy?debug=a`,
 
         // 登录地址，用于建立会话
         loginUrl: `${host}/weapp/login`,

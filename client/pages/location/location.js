@@ -1,6 +1,6 @@
 // pages/store/store.js
-var order = ['red', 'yellow', 'blue', 'green', 'red']
-
+var order = ['red', 'yellow', 'blue', 'green', 'red'];
+var config = require('../../config');
 Page({
 
   /**
@@ -10,6 +10,8 @@ Page({
     location: {
       latitude: "",
       longitude: "",
+      pointx:'',
+      pointy:'',
       name: "",
       address: ""
     },
@@ -19,16 +21,32 @@ Page({
   },
 
   getStoreList:function() {
-    var list = [];
-    for(var i=0;i<20;i++) {
-      var store = {};
-      store.order = i+1;
-      store.isSubject = i % 2 == 0 ? '是':'否';
-      store.name = 'name' + i;
-      list.push(store);
-    }
+    var that = this;
+    console.log(that);
+    wx.request({
+      url: config.service.nearbyStores,
+      data: that.data.location,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res.data)
+        if ('001' == res.data.code) {
+          that.setData({storeList:res.data.message});
+        }
+      }
+    })
+    // var list = [];
+    // for(var i=0;i<20;i++) {
+    //   var store = {};
+    //   store.order = i+1;
+    //   store.isSubject = i % 2 == 0 ? '是':'否';
+    //   store.name = 'name' + i;
+    //   list.push(store);
+    // }
 
-    return list;
+    // return list;
   },
 
   /**
@@ -38,8 +56,10 @@ Page({
     var that = this;
     wx.chooseLocation({
       success: function (res) {
+        console.log(res);
+        that.setData({ location: { pointx: res.longitude, pointy: res.latitude, name: res.name, address: res.address } });
+        that.getStoreList();
         
-        that.setData({ location: { latitude: res.latitude, longitude: res.longitude, name: res.name, address: res.address },        storeList:that.getStoreList() });
       },
     })
   },

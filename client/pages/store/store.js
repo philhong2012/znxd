@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    hideFollwerInput:false
+  },
+
+  switchflowChange:function(e) {
+    console.log('switch 发生 change 事件，携带值为', e.detail.value)
+    this.setData({ hideFollwerInput: e.detail.value });
   },
 
   enter: function() {
