@@ -2,26 +2,24 @@
 <!--<text>pages/login/index.wxml</text>-->
 <form bindsubmit="formSubmit" bindreset="formReset">
 <view class="section">
-   <input class="login-input-text" name="floginid" value='{{floginid}}' type="text"  placeholder="登录账号" auto-focus></input>
+   <input class="weui-input" name="floginid" value='{{floginid}}' type="text"  placeholder="登录账号" auto-focus></input>
 </view>
 
 <view class="section">
-   <input class="login-input-text" name="fpassword" value='{{fpassword}}' type="password"  placeholder="登录密码" auto-focus></input>
+   <input class="weui-input" name="fpassword" value='{{fpassword}}' type="password"  placeholder="登录密码" auto-focus></input>
 </view>
 
 <view class="section">
-   <input class="login-input-text" type="text"  placeholder="随访人员" auto-focus></input>
+   <input class="weui-input" type="text"  placeholder="随访人员" auto-focus></input>
 </view>
 
-<view class="section">
-  <picker class= "picker" bindchange="onMonitorTypeChanged" placeholder="巡店模式" value="{{monitorTypeIndex}}" range="{{monitorType}}">
-    <view class="picker">
-      巡店模式：{{monitorType[monitorTypeIndex]}}
-    </view>
+<view>
+  <picker bindchange="onMonitorTypeChanged" placeholder="巡店模式" value="{{monitorTypeIndex}}" range="{{monitorType}}">
+    <button type="default">寻店模式：{{monitorType[monitorTypeIndex]}}</button>
   </picker>
 </view>
 
 <view class="section">
-   <button form-type='submit'>登录</button>
+   <button form-type='submit' class="weui-btn" type="primary">登录</button>
 </view>
 </form>

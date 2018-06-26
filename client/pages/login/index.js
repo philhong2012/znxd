@@ -47,7 +47,11 @@ Page({
       },
       method:'POST',
       success: function (res) {
-        console.log(res.data)
+        //console.log(res.data)
+        wx.setStorage({
+          key: 'user',
+          data: res.data.message,
+        });
         if('001' == res.data.code) {
           wx.navigateTo({ url: '../location/location' });
         }

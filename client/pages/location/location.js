@@ -1,5 +1,4 @@
 // pages/store/store.js
-var order = ['red', 'yellow', 'blue', 'green', 'red'];
 var config = require('../../config');
 Page({
 
@@ -17,7 +16,8 @@ Page({
     },
     storeList:[
       
-    ]
+    ],
+    user: {}
   },
 
   getStoreList:function() {
