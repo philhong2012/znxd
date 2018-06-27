@@ -1,28 +1,30 @@
 // pages/checkRecord/checkRecord.js
+var config = require('../../config');
+var util = require('../../utils/util.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    CLM:[1,2,3,4],
-    CLMIndex:null,
-    CLWZ:['优','良','中','差'],
-    CLWZIndex:null,
-    scanCode:null,
-    code:null,
-    name:null,
-    batchNumber:null,
-    price:null,
-    storage:null,
-    monitorCode:null
+    dispSurfItems:[1,2,3,4],
+    dispSurfIndex:null,
+    dispPosiItems:['优','良','中','差'],
+    dispPosiIndex:null,
+    drugBcode:null,
+    drugCode:null,
+    drugName:null,
+    drugNumb:null,
+    drugPrice:null,
+    storeNum:null
   },
 
   scan:function() {
     var that = this;
     wx.scanCode({
       success: (res) => {
-        console.log(res);
+        //console.log(res);
         that.setData({code:res.result});
       }
     })
@@ -41,17 +43,39 @@ Page({
     })
   },
 
-  onCLMChanged :function(e) {
+  formSubmit:function(e) {
+    this.setData(e.detail.value);
+    var that = this;
+    //获取数据，调用后台，成功后，进入功能首页
+    //wx.navigateTo({ url:'../location/location'});
+    wx.request({
+      url: config.service.saveDisplayInfo,
+      data: that.data,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'POST',
+      success: function (res) {
+        if ('001' == res.data.code) {
+          util.showSuccess('保存成功');
+        } else {
+          util.showModel('出错啦',null);
+        }
+      }
+    })
+  },
+
+  onDispSurfChanged :function(e) {
     this.setData({
-      CLMIndex: e.detail.value
+      dispSurfIndex: e.detail.value
     })
   },
 
 
 
-  onCLWZChanged:function(e) {
+  onDispPosiChanged:function(e) {
     this.setData({
-      CLWZIndex: e.detail.value
+      dispPosiIndex: e.detail.value
     })
   },
 

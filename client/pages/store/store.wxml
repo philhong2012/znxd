@@ -1,11 +1,11 @@
 <view>
   <view>
     <text>药店名称:</text>
-    <input type='text' value='{{cname}}'></input>
+    <input type='text' class='weui-input' value='{{cname}}'></input>
   </view>
   <view>
     <text>药店编码:</text>
-    <input type='text' value='{{dsCode}}'></input>
+    <input type='text' class='weui-input' value='{{dsCode}}'></input>
   </view>
   <view>
     <text>是否录随访人员:</text>
@@ -15,7 +15,7 @@
   <block wx:if="{{hideFollwerInput}}">
     <view>
       <text>随访人员:</text>
-      <input type='text' value='{{followName}}'></input>
+      <input type='text' class='weui-input' value='{{followName}}'></input>
     </view>
   </block>
   

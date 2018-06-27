@@ -1,52 +1,100 @@
 <!--pages/checkRecord/checkRecord.wxml-->
 
 <form bindsubmit="formSubmit" bindreset="formReset">
-<view class='clear'>
-  <view>
-    <input class='input-text' type='text' placeholder='药品条码' value='{{scanCode}}'></input>
-    <button bindtap='scan'>识别</button>
-  </view>
-  <view>
-    <input class='input-text' type='text' placeholder='药品编码' value='{{code}}' ></input>
-    <button>查询库存</button>
-  </view>
-  <view>
-    <input class='input-text' type='text' placeholder='药品名称' value='{{name}}'></input>
-  </view>
-  <view>
-    <input class='input-text' type='text' placeholder='批号' value='{{batchNumber}}'></input>
-  </view>
-  <view>
-    <input type='text' placeholder='陈列面' ></input>
-    <picker class= "picker" bindchange="onCLMChanged" placeholder="陈列面" value="{{CLMIndex}}" range="{{CLM}}">
-      <view class="picker">
-        陈列面：{{CLM[CLMIndex]}}
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">药品条码</view>
       </view>
-    </picker>
-  </view>
-  <view>
-    <picker class= "picker" bindchange="onCLWZChanged" placeholder="陈列位置" value="{{CLWZIndex}}" range="{{CLWZ}}">
-      <view class="picker">
-        陈列位置：{{CLWZ[CLWZIndex]}}
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="drugBcode" value="{{drugBcode}}" placeholder="请输入药品条码" />
       </view>
-    </picker>
+      <view class="weui-cell__ft">
+        <view class="weui-vcode-btn">
+          <button class="weui-btn" bindtap='scan' type="primary">识别</button>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">药品编码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='drugCode' value="{{drugCode}}" placeholder="请输入药品编码" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">药品名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='drugName' value="{{drugName}}" placeholder="请输入药品名称" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">批号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='durgNumb' value="{{drugNumb}}" placeholder="请输入批号" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">陈列面</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker value="{{dispSurfIndex}}" range="{{dispSurfItems}}" bindchange="onDispSurfChanged">
+          <view class="weui-input">{{dispSurfItems[dispSurfIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">陈列位置</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker value="{{dispPosiIndex}}" range='{{dispPosiItems}}' bindchange="onDispPosiChanged">
+          <view class="weui-input">{{dispPosiItems[dispPosiIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">价格</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='drugPrice' value='{{drugPrice}}' placeholder="请输入价格" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">陈列库存</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='storeNum' value='{{storeNum}}' placeholder="请输入陈列库存" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">监管码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value="" placeholder="请输入监管码" />
+      </view>
+      <view class="weui-cell__ft">
+        <view class="weui-vcode-btn">
+          <button class="weui-btn" bindtap='scan' type="primary">识别</button>
+        </view>
+      </view>
+    </view>
   </view>
-  <view>
-    <input class='input-text' type='digit' placeholder='价格' value='{{price}}'></input>
-  </view>
-  <view>
-    <input class='input-text' type='text' placeholder='陈列库存' value='{{storage}}'></input>
-  </view>
-  <view>
-    <input class='input-text' type='text' placeholder='监管码' value='{{monitorCode}}'></input>
-     <button>识别</button>
-  </view>
-</view>
+ 
 
-<view>
-  <button class='button'>保存继续采集</button>
-  <button class='button' bindtap='takePhoto'>拍照</button>
-  <button class='button'>进入其他店铺</button>
-  <button class='button'>保存退出</button>
-</view>
+  <view>
+    <button class='weui-btn' form-type='submit' type='primary'>保存继续采集</button>
+    <button class='weui-btn' type='default'  bindtap='takePhoto'>拍照</button>
+    <button class='weui-btn' type='default'>进入其他店铺</button>
+    <button class='weui-btn' type='default'>保存退出</button>
+  </view>
 </form>

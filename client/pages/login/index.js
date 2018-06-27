@@ -54,6 +54,8 @@ Page({
         });
         if('001' == res.data.code) {
           wx.navigateTo({ url: '../location/location' });
+        } else {
+          util.showModel('警告','用户名获密码错误');
         }
       }
     })
