@@ -1,11 +1,14 @@
 {
   "pages": [
+     
     "pages/login/index",
     "pages/index/index",
     "pages/addCgi/addCgi",
     "pages/location/location",
     "pages/store/store",
     "pages/checkRecord/checkRecord"
+  
+  
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

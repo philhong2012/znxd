@@ -4,8 +4,8 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 var host = 'https://gvxbkhpr.qcloud.la';
-var myHost = 'http://192.168.17.192:9001';
-
+//var myHost = 'http://192.168.17.192:9001';
+var myHost = 'http://172.20.10.2:9001';
 //var myHost = 'http://192.168.1.104:9001';
 var config = {
 
@@ -14,6 +14,10 @@ var config = {
         host,
 
         myHost,
+
+
+        saveDisplayInfo: `${myHost}/display/saveDisplay`,
+
 
         helloWorld: `${myHost}/api/helloWorld`,
 
@@ -25,7 +29,7 @@ var config = {
 
         saveInstoreInfo: `${myHost}/instore/saveInstore`,
 
-        saveDisplayInfo: `${myHost}/display/saveDisplay`,
+        uploadFile: `${myHost}/file/upload`,
 
         // 登录地址，用于建立会话
         loginUrl: `${host}/weapp/login`,
