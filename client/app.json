@@ -1,12 +1,13 @@
 {
   "pages": [
-     
+      "pages/checkRecord/checkRecord",
     "pages/login/index",
+      "pages/addStore/storeForm",
+   
     "pages/index/index",
     "pages/addCgi/addCgi",
     "pages/location/location",
-    "pages/store/store",
-    "pages/checkRecord/checkRecord"
+    "pages/store/store"
   
   
   ],

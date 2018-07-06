@@ -4,9 +4,9 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 var host = 'https://gvxbkhpr.qcloud.la';
-//var myHost = 'http://192.168.17.192:9001';
-var myHost = 'http://172.20.10.2:9001';
-//var myHost = 'http://192.168.1.104:9001';
+var myHost = 'http://192.168.17.192:9001';
+//var myHost = 'http://172.20.10.2:9001';
+var myHost = 'http://192.168.1.104:9001';
 var config = {
 
     // 下面的地址配合云端 Demo 工作
@@ -26,6 +26,8 @@ var config = {
         nearbyStores: `${myHost}/drugstore/nearBy?debug=a`,
 
         getStoreInfo: `${myHost}/drugstore/store`,
+
+        saveStoreInfo: `${myHost}/drugstore/saveStore`,
 
         saveInstoreInfo: `${myHost}/instore/saveInstore`,
 

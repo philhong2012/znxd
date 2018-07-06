@@ -1,6 +1,7 @@
 <!--pages/checkRecord/checkRecord.wxml-->
 
 <form bindsubmit="formSubmit" bindreset="formReset">
+
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input weui-cell_vcode">
       <view class="weui-cell__hd">
@@ -64,7 +65,7 @@
         <view class="weui-label">价格</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='drugPrice' value='{{drugPrice}}' placeholder="请输入价格" />
+        <input class="weui-input" type='digit' name='drugPrice' value='{{drugPrice}}' placeholder="请输入价格" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -72,7 +73,7 @@
         <view class="weui-label">陈列库存</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='storeNum' value='{{storeNum}}' placeholder="请输入陈列库存" />
+        <input class="weui-input" name='storeNum' type='digit' value='{{storeNum}}' placeholder="请输入陈列库存" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -121,8 +122,7 @@
 
   <view>
     <button class='weui-btn' form-type='submit' type='primary'>保存继续采集</button>
-    <button class='weui-btn' type='default'  bindtap='takePhoto'>拍照</button>
-    <button class='weui-btn' type='default'>进入其他店铺</button>
+    <button class='weui-btn' type='default' bindtap='goToStoreList'>进入其他店铺</button>
     <button class='weui-btn' type='default'>保存退出</button>
   </view>
 </form>

@@ -4,7 +4,9 @@
 
 <view><text>地址：  {{ location.address }}</text></view>
 
-
+ <view class="button-sp-area">
+    <button class="weui-btn" type="primary" plain="true" bindtap='goToStoreForm'>新增药店</button>      
+ </view>
 
    <view class="weui-cells weui-cells_after-title" wx:for="{{storeList}}" wx:for-index="idx" wx:for-item="store">
             <navigator url="../store/store?id={{store.cid}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">

@@ -20,6 +20,9 @@ Page({
     user: {}
   },
 
+  goToStoreForm:function() {
+    wx.navigateTo({ url: '../addStore/storeForm' });
+  },
   getStoreList:function() {
     var that = this;
     console.log(that);
@@ -63,10 +66,13 @@ Page({
     var that = this;
     wx.chooseLocation({
       success: function (res) {
-        console.log(res);
+        //console.log(res);
         that.setData({ location: { pointx: res.longitude, pointy: res.latitude, name: res.name, address: res.address } });
         that.getStoreList();
-
+        wx.setStorage({
+          key: 'location',
+          data: res
+        });
       },
     });
   },

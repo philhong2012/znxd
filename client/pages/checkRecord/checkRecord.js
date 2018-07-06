@@ -1,6 +1,7 @@
 // pages/checkRecord/checkRecord.js
 var config = require('../../config');
 var util = require('../../utils/util.js');
+import { validate, validateRequired } from '../../utils/validate'
 
 Page({
 
@@ -58,16 +59,19 @@ Page({
       },
       method: 'POST',
       success: function (res) {
+        console.log(res);
         if ('001' == res.data.code) {
           util.showSuccess('保存成功');
         } else {
-          util.showModel('出错啦',null);
+          util.showModel('出错啦',res.data.message);
         }
       }
     });
   },
 
+  goToStoreList:function() {
 
+  },
 
   onDispSurfChanged :function(e) {
     this.setData({

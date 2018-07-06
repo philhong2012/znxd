@@ -1,0 +1,99 @@
+<!--pages/addStore/storeForm.wxml-->
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">药店名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='cname' value="{{cname}}" placeholder="药店名称" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">药店等级</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker value="{{levelIndex}}" range="{{levelItems}}" bindchange="onlevelChanged">
+          <view class="weui-input">{{levelItems[levelIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">目标药店</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker value="{{destFlagIndex}}" range="{{destFlagItems}}" bindchange="onDestFlagChanged">
+          <view class="weui-input">{{destFlagItems[destFlagIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">月营业额</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='monthAmt' value="{{monthAmt}}" placeholder="请输入月营业额" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">所在省份</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker value="{{provinceIndex}}" range="{{provinceItems}}" bindchange="onProvinceChanged">
+          <view class="weui-input">{{provinceItems[provinceIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">所在城市</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker value="{{cityIndex}}" range="{{cityItems}}" bindchange="onCityChanged">
+          <view class="weui-input">{{cityItems[cityIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">经度坐标</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='piontx' value="{{pointx}}" placeholder="" />
+      </view>
+    </view>
+     <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">纬度坐标</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='pointy' value="{{pointy}}" placeholder="" />
+      </view>
+    </view>
+     <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">药店位置</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='address' value="{{address}}" placeholder="" />
+      </view>
+    </view>
+     <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">OTC代表</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='sales' value="{{sales}}" placeholder="" />
+      </view>
+    </view>
+  </view>
+  <view>
+    <button class='weui-btn' form-type='submit' type='primary'>保存</button>
+    <button class='weui-btn' type='default'  bindtap='goToStoreList'>取消</button>
+  </view>
+</form>
