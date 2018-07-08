@@ -50,6 +50,8 @@ Page({
     //console.log('save exit');
     //清除位置缓存
     wx.removeStorage({ key: 'location' });
+    wx.removeStorage({ key: 'store' });
+    wx.removeStorage({ key: 'user' });
     wx.navigateTo({
       url: '../login/index',
     });
