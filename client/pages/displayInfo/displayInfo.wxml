@@ -47,7 +47,7 @@
       <view class="weui-cell__bd">
         <picker value="{{dispSurfIndex}}" range="{{dispSurfItems}}" bindchange="onDispSurfChanged">
           <!-- <view class="weui-input">{{dispSurfItems[dispSurfIndex]}}</view> -->
-          <input class="weui-input" name='dispSurf' value="{{dispSurfItems[dispSurfIndex]}}"  />
+          <input disabled='true' class="weui-input" name='dispSurf' value="{{dispSurfItems[dispSurfIndex]}}"  />
         </picker>
       </view>
     </view>
@@ -58,7 +58,7 @@
       <view class="weui-cell__bd">
         <picker value="{{dispPosiIndex}}" range='{{dispPosiItems}}' bindchange="onDispPosiChanged">
           <!-- <view class="weui-input">{{dispPosiItems[dispPosiIndex]}}</view> -->
-           <input class="weui-input" name='dispPosi' value="{{dispPosiItems[dispPosiIndex]}}"  />
+           <input disabled='true' class="weui-input" name='dispPosi' value="{{dispPosiItems[dispPosiIndex]}}"  />
         </picker>
       </view>
     </view>

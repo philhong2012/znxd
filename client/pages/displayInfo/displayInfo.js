@@ -53,7 +53,7 @@ Page({
     wx.removeStorage({ key: 'store' });
     wx.removeStorage({ key: 'user' });
     wx.navigateTo({
-      url: '../login/index',
+      url: '../login/login',
     });
   },
 
