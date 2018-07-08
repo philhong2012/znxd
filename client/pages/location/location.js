@@ -23,6 +23,11 @@ Page({
   goToStoreForm:function() {
     wx.navigateTo({ url: '../addStore/storeForm' });
   },
+
+  refreshStore:function() {
+    this.getStoreList();
+  },
+
   getStoreList:function() {
     var that = this;
     wx.request({
@@ -39,16 +44,6 @@ Page({
         }
       }
     })
-    // var list = [];
-    // for(var i=0;i<20;i++) {
-    //   var store = {};
-    //   store.order = i+1;
-    //   store.isSubject = i % 2 == 0 ? '是':'否';
-    //   store.name = 'name' + i;
-    //   list.push(store);
-    // }
-
-    // return list;
   },
 
   /**
@@ -75,7 +70,6 @@ Page({
    */
 
   onReady: function () {
-    console.log('xxxxxx')
 
     var that = this;
 

@@ -39,6 +39,33 @@ var showModel = (title, content) => {
     })
 }
 
+var cacheData = (key,value) => {
+  //存入缓存
+  wx.setStorage({
+    key: key,
+    data: value
+  });
+}
+
+
+var getCache = (key, success,fail) => {
+  //存入缓存
+  wx.getStorage({
+    key: key,
+    success:function(res) {
+      if(typeof success === 'function') {
+        success(res);
+      }
+    },
+    fail:function(res) {
+      if (typeof success === 'function') {
+        fail(res);
+      }
+    }
+  });
+}
+
+
 // var uploadToServer = (callback) => {
 //   var tempFilePaths = this.data.files;
 //   wx.uploadFile({
@@ -59,4 +86,4 @@ var showModel = (title, content) => {
 // }
 
 
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+module.exports = { formatTime, showBusy, showSuccess, showModel,cacheData,getCache }

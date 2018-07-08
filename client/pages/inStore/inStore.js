@@ -1,5 +1,6 @@
 // pages/store/store.js
 var config = require('../../config');
+var util = require('../../utils/util');
 Page({
 
   /**
@@ -30,7 +31,7 @@ Page({
           //wx.navigateTo({ url: '../location/location' });
           var store = res.data.message;
           that.setData(store);
-          console.log(that.data); 
+          util.cacheData('store',store);
         }
       }
     });
@@ -59,7 +60,7 @@ Page({
         console.log(res.data)
         if ('001' == res.data.code) {
           wx.navigateTo({
-            url: '../checkRecord/checkRecord',
+            url: '../displayInfo/displayInfo',
           });
         }
       }
@@ -89,6 +90,26 @@ Page({
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: this.data.files // 需要预览的图片http链接列表
+    })
+  },
+
+
+  uploadToServer: function () {
+    var tempFilePaths = this.data.files;
+    wx.uploadFile({
+      url: config.service.uploadFile,
+      filePath: tempFilePaths[0],
+      name: 'uploadFiles',
+      formData: {
+        'user': 'test'
+      },
+      success: function (res) {
+        var data = res.data
+        if ('001' === data.code) {
+          that.setData({ imgName: data.message });
+        }
+        //do something
+      }
     })
   },
 
