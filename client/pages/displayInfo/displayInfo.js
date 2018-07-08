@@ -149,27 +149,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.getStorage({
-    //   key: 'store',
-    //   success: function (res) {
-    //     //如果有缓存，直接从缓存读取位置信息
-    //     that.setData({dsName:res.cname,dsCode:res.dsCode2});
-    //   }
-    // });
-
-    // wx.getStorage({
-    //   key: 'user',
-    //   success: function (res) {
-    //     //如果有缓存，直接从缓存读取位置信息
-    //     that.setData({ loginId: res.floginid, createname: res.fname });
-    //   }
-    // });
+     var that = this;
+    console.log(util);
      util.getCache('store',function(res) {
-       that.setData({ dsName: res.cname, dsCode: res.dsCode2 });
+       console.log(res);
+       that.setData({ dsName: res.data.cname, dsCode: res.data.dsCode2 });
      });
 
      util.getCache('user',function(res) {
-       that.setData({ loginId: res.floginid, createname: res.fname });
+       that.setData({ loginid: res.data.floginid, createname: res.data.fname });
      });
   
   },

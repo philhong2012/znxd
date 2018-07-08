@@ -1,7 +1,8 @@
 {
   "pages": [
+    "pages/displayInfo/displayInfo",
 "pages/login/login",
-        "pages/displayInfo/displayInfo",
+       
       
 
       "pages/inStore/inStore",
