@@ -39,4 +39,24 @@ var showModel = (title, content) => {
     })
 }
 
+// var uploadToServer = (callback) => {
+//   var tempFilePaths = this.data.files;
+//   wx.uploadFile({
+//     url: config.service.uploadFile,
+//     filePath: tempFilePaths[0],
+//     name: 'uploadFiles',
+//     formData: {
+//       'user': 'test'
+//     },
+//     success: function (res) {
+//       var data = res.data
+//       if ('001' === data.code) {
+//         that.setData({ imgName: data.message });
+//       }
+//       //do something
+//     }
+//   })
+// }
+
+
 module.exports = { formatTime, showBusy, showSuccess, showModel }

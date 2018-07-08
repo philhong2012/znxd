@@ -1,6 +1,8 @@
 // pages/addStore/storeForm.js
 var config = require('../../config');
 var util = require('../../utils/util.js');
+var qqMapWx = require('../../utils/qqmap-wx-jssdk.min.js');
+var qqmapsdk = null;
 Page({
 
   /**
@@ -10,7 +12,7 @@ Page({
     cname:"",
     levelItems:['A','B','C'],
     destFlagItems:['是','否'],
-    monthAmt:0,
+    monthAmt:null,
     // provinceItems: [{ provinceCode: '', provinceName: '广东省' }, { provinceCode: 'B', provinceName: '' }, { provinceCode: 'C', provinceName: '' }],
     // cityItems: [{ cityCode: '', cityName: '广州市' }, { cityCode: '', cityName: '' }, { cityCode: '', cityName: '' }],
     provinceItems:['广东省'],
@@ -19,7 +21,8 @@ Page({
     pointx:'',
     pointy:'',
     sales:'',
-    levelIndex:''
+    levelIndex:0,
+    destFlagIndex:0
   
   },
 
@@ -69,7 +72,7 @@ Page({
         if ('001' == res.data.code) {
           util.showSuccess('保存成功');
         } else {
-          util.showModel('出错啦', null);
+          util.showModel('警告', res.data.message);
         }
       }
     });
@@ -79,27 +82,54 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
     var that = this;
-    wx.getStorage({
-      key: 'user',
-      success: function (res) {
-        that.setData({ sales: res.data.fname + '(' + res.data.floginid + ')'});
-      }
+
+    // 实例化API核心类
+    qqmapsdk = new qqMapWx({
+      key: config.qqMapKey
     });
-    wx.getStorage({
-      key: 'location',
-      success: function (res) {
-        console.log(res);
-        that.setData({ pointx:res.data.longitude,pointy:res.data.latitude,address:res.data.address });
-      }
-    });
+
+  
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success: function (res) {
+        that.setData({ sales: res.data.fname + '(' + res.data.floginid + ')' });
+      }
+    });
+    wx.getStorage({
+      key: 'location',
+      success: function (res) {
+        console.log(res);
+        that.setData({ pointx: res.data.longitude, pointy: res.data.latitude, address: res.data.address });
+        console.log(qqMapWx);
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: res.data.latitude,
+            longitude: res.data.longitude
+          },
+          success: function (addressRes) {
+            //var nation = ress.result.address_component.nation;
+            var provinceName = addressRes.result.address_component.province;
+            var cityName = addressRes.result.address_component.city;
+            //var district = ress.result.address_component.district;
+
+            that.setData({
+              cityName:cityName,provinceName:provinceName
+            })
+          }
+        })
+
+      }
+    });
   },
 
   /**

@@ -25,7 +25,6 @@ Page({
   },
   getStoreList:function() {
     var that = this;
-    console.log(that);
     wx.request({
       url: config.service.nearbyStores,
       data: that.data.location,
@@ -59,22 +58,50 @@ Page({
    
   },
 
+  setLocation:function(data) {
+    this.setData({ location: { pointx: data.longitude, pointy: data.latitude, address: data.address } });
+  },
+
+  cacheLocation:function(res) {
+    //存入缓存
+    wx.setStorage({
+      key: 'location',
+      data: res
+    });
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+
   onReady: function () {
+    console.log('xxxxxx')
+
     var that = this;
-    wx.chooseLocation({
+
+    wx.getStorage({
+      key: 'location',
       success: function (res) {
-        //console.log(res);
-        that.setData({ location: { pointx: res.longitude, pointy: res.latitude, name: res.name, address: res.address } });
-        that.getStoreList();
-        wx.setStorage({
-          key: 'location',
-          data: res
-        });
+          //如果有缓存，直接从缓存读取位置信息
+          //console.log(res);
+          that.setLocation(res.data);
+          that.getStoreList();
       },
+      fail:function() {
+        wx.chooseLocation({
+          success: function (res) {
+            that.setLocation(res);
+            that.getStoreList();
+            that.cacheLocation(res);
+         
+          },
+        });
+      }
+      
     });
+
+
+    
   },
 
   /**

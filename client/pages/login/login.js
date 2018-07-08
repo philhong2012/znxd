@@ -52,6 +52,9 @@ Page({
           key: 'user',
           data: res.data.message,
         });
+
+        //清除位置缓存
+        wx.removeStorage({key:'location'});
         if('001' == res.data.code) {
           wx.navigateTo({ url: '../location/location' });
         } else {

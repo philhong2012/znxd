@@ -121,8 +121,8 @@
 </view>
 
   <view>
-    <button class='weui-btn' form-type='submit' type='primary'>保存继续采集</button>
+    <button class='weui-btn' data-qqq='qqq' data-eee='eee' abc='abc' id="btnSaveAndContinue" form-type='submit' type='primary'>保存继续采集</button>
     <button class='weui-btn' type='default' bindtap='goToStoreList'>进入其他店铺</button>
-    <button class='weui-btn' type='default'>保存退出</button>
+    <button class='weui-btn' id="btnSaveAndExit" type='default' form-type='submit'>保存退出</button>
   </view>
 </form>

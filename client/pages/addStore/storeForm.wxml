@@ -44,19 +44,25 @@
         <view class="weui-label">所在省份</view>
       </view>
       <view class="weui-cell__bd">
+        <input class="weui-input" name='provinceName' value="{{provinceName}}" placeholder="" />
+      </view>
+      <!-- <view class="weui-cell__bd">
         <picker value="{{provinceIndex}}" range="{{provinceItems}}" bindchange="onProvinceChanged">
           <view class="weui-input">{{provinceItems[provinceIndex]}}</view>
         </picker>
-      </view>
+      </view> -->
     </view>
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
         <view class="weui-label">所在城市</view>
       </view>
-      <view class="weui-cell__bd">
+      <!-- <view class="weui-cell__bd">
         <picker value="{{cityIndex}}" range="{{cityItems}}" bindchange="onCityChanged">
           <view class="weui-input">{{cityItems[cityIndex]}}</view>
         </picker>
+      </view> -->
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='cityName' value="{{cityName}}" placeholder="" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">

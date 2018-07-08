@@ -37,7 +37,7 @@ Page({
     wx.chooseImage({
       count: 2, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
@@ -46,7 +46,19 @@ Page({
     })
   },
 
+  saveExit:function() {
+    //console.log('save exit');
+    //清除位置缓存
+    wx.removeStorage({ key: 'location' });
+    wx.navigateTo({
+      url: '../login/index',
+    });
+  },
+
+
   formSubmit:function(e) {
+    console.log(e);
+    //if(e.detail.target.id === 'saveAnd')
     this.setData(e.detail.value);
     var that = this;
     //获取数据，调用后台，成功后，进入功能首页
@@ -59,9 +71,12 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res);
+        //console.log(res);
         if ('001' == res.data.code) {
           util.showSuccess('保存成功');
+          if(e.detail.target.id === 'btnSaveAndExit') {
+            that.saveExit();
+          }
         } else {
           util.showModel('出错啦',res.data.message);
         }
@@ -70,7 +85,7 @@ Page({
   },
 
   goToStoreList:function() {
-
+    wx.navigateTo({ url: '../location/location' });
   },
 
   onDispSurfChanged :function(e) {

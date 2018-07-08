@@ -1,0 +1,61 @@
+<view>
+  <view>
+    <text>药店名称:</text>
+    <input type='text' class='weui-input' value='{{cname}}'></input>
+  </view>
+  <view>
+    <text>药店编码:</text>
+    <input type='text' class='weui-input' value='{{dsCode}}'></input>
+  </view>
+  <view>
+    <text>是否录随访人员:</text>
+     <switch bindchange="switchflowChange"/>
+  </view>
+
+  <block wx:if="{{hideFollwerInput}}">
+    <view>
+      <text>随访人员:</text>
+      <input type='text' class='weui-input' value='{{followName}}'></input>
+    </view>
+  </block>
+  
+
+  <view>
+    <text>OTC代表:</text>
+    <text>{{user.fname}}</text>
+  </view>
+
+   <view class="page">
+    <view class="page__bd">
+        <view class="weui-cells">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                            <view class="weui-uploader__title">图片上传</view>
+                            <view class="weui-uploader__info">{{files.length}}/1</view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{files}}" wx:key="*this">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                </block>                     
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+</view>
+
+<view>
+<button bindtap='enter' class="weui-btn" type="primary">进入店铺</button>
+</view>
