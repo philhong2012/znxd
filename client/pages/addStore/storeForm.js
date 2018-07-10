@@ -84,12 +84,12 @@ Page({
   onLoad: function (options) {
 
 
-    var that = this;
+    //var that = this;
 
     // 实例化API核心类
-    qqmapsdk = new qqMapWx({
-      key: config.qqMapKey
-    });
+    // qqmapsdk = new qqMapWx({
+    //   key: config.qqMapKey
+    // });
 
   
   },
@@ -109,24 +109,24 @@ Page({
       key: 'location',
       success: function (res) {
         console.log(res);
-        that.setData({ pointx: res.data.longitude, pointy: res.data.latitude, address: res.data.address });
-        console.log(qqMapWx);
-        qqmapsdk.reverseGeocoder({
-          location: {
-            latitude: res.data.latitude,
-            longitude: res.data.longitude
-          },
-          success: function (addressRes) {
-            //var nation = ress.result.address_component.nation;
-            var provinceName = addressRes.result.address_component.province;
-            var cityName = addressRes.result.address_component.city;
-            //var district = ress.result.address_component.district;
+        that.setData({ pointx: res.data.longitude, pointy: res.data.latitude, address: res.data.address,areaCode:res.data.areaCode,cityCode:res.data.cityCode,cityName:res.data.cityName,provinceName:res.data.provinceName });
+        //console.log(qqMapWx);
+        // qqmapsdk.reverseGeocoder({
+        //   location: {
+        //     latitude: res.data.latitude,
+        //     longitude: res.data.longitude
+        //   },
+        //   success: function (addressRes) {
+        //     //var nation = ress.result.address_component.nation;
+        //     var provinceName = addressRes.result.address_component.province;
+        //     var cityName = addressRes.result.address_component.city;
+        //     //var district = ress.result.address_component.district;
 
-            that.setData({
-              cityName:cityName,provinceName:provinceName
-            })
-          }
-        })
+        //     that.setData({
+        //       cityName:cityName,provinceName:provinceName
+        //     })
+        //   }
+        // })
 
       }
     });

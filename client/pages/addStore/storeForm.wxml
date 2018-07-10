@@ -18,7 +18,7 @@
       <view class="weui-cell__bd">
         <picker value="{{levelIndex}}" range="{{levelItems}}" bindchange="onlevelChanged">
           <!-- <view class="weui-input">{{levelItems[levelIndex]}}</view> -->
-           <input class="weui-input" name='levl' value="{{levelItems[levelIndex]}}" />
+           <input class="weui-input"  disabled='true' name='levl' value="{{levelItems[levelIndex]}}" />
         </picker>
       </view>
     </view>
@@ -29,7 +29,7 @@
       <view class="weui-cell__bd">
         <picker value="{{destFlagIndex}}" range="{{destFlagItems}}" bindchange="onDestFlagChanged">
           <!-- <view class="weui-input">{{destFlagItems[destFlagIndex]}}</view> -->
-           <input class="weui-input" name='destFlag' value="{{destFlagItems[destFlagIndex]}}" />
+           <input class="weui-input"  disabled='true' name='destFlag' value="{{destFlagItems[destFlagIndex]}}" />
         </picker>
       </view>
     </view>

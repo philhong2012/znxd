@@ -1,5 +1,7 @@
 // pages/store/store.js
 var config = require('../../config');
+var qqMapWx = require('../../utils/qqmap-wx-jssdk.min.js');
+var qqmapsdk = null;
 Page({
 
   /**
@@ -9,26 +11,28 @@ Page({
     location: {
       latitude: "",
       longitude: "",
-      pointx:'',
-      pointy:'',
+      pointx: '',
+      pointy: '',
       name: "",
       address: ""
     },
-    storeList:[
-      
+    storeList: [
+
     ],
     user: {}
   },
 
-  goToStoreForm:function() {
-    wx.navigateTo({ url: '../addStore/storeForm' });
+  goToStoreForm: function() {
+    wx.navigateTo({
+      url: '../addStore/storeForm'
+    });
   },
 
-  refreshStore:function() {
+  refreshStore: function() {
     this.getStoreList();
   },
 
-  getStoreList:function() {
+  getStoreList: function() {
     var that = this;
     wx.request({
       url: config.service.nearbyStores,
@@ -37,10 +41,12 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       method: 'POST',
-      success: function (res) {
+      success: function(res) {
         console.log(res.data)
         if ('001' == res.data.code) {
-          that.setData({storeList:res.data.message});
+          that.setData({
+            storeList: res.data.message
+          });
         }
       }
     })
@@ -49,15 +55,25 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-   
+  onLoad: function(options) {
+    // 实例化API核心类
+    qqmapsdk = new qqMapWx({
+      key: config.qqMapKey
+    });
   },
 
-  setLocation:function(data) {
-    this.setData({ location: { pointx: data.longitude, pointy: data.latitude, address: data.address } });
+  setLocation: function(data) {
+    this.setData({
+      location: {
+        pointx: data.longitude,
+        pointy: data.latitude,
+        address: data.address
+      }
+    });
+
   },
 
-  cacheLocation:function(res) {
+  cacheLocation: function(res) {
     //存入缓存
     wx.setStorage({
       key: 'location',
@@ -69,74 +85,102 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
 
-  onReady: function () {
-
+  onReady: function() {
     var that = this;
-
     wx.getStorage({
       key: 'location',
-      success: function (res) {
-          //如果有缓存，直接从缓存读取位置信息
-          //console.log(res);
-          that.setLocation(res.data);
-          that.getStoreList();
+      success: function(res) {
+        //如果有缓存，直接从缓存读取位置信息
+        //console.log(res);
+        console.log('success:get location from cache')
+        that.setLocation(res.data);
+        that.getStoreList();
       },
-      fail:function() {
-        wx.chooseLocation({
-          success: function (res) {
-            that.setLocation(res);
-            that.getStoreList();
-            that.cacheLocation(res);
-         
-          },
+      fail: function() {
+        console.log('failed:get location from cache')
+        wx.getLocation({
+          success: function(res) {
+            //that.setLocation(res);
+
+            qqmapsdk.reverseGeocoder({
+              location: {
+                latitude: res.latitude,
+                longitude: res.longitude
+              },
+              success: function(addressRes) {
+                console.log(addressRes);
+                //var nation = ress.result.address_component.nation;
+                var provinceName = addressRes.result.address_component.province;
+                var cityName = addressRes.result.address_component.city;
+                //var district = ress.result.address_component.district;
+                var address = addressRes.result.address;
+                var areaCode = addressRes.result.ad_info.adcode;
+                var cityCode = addressRes.result.ad_info.city_code;
+                that.setData({
+                  cityName: cityName,
+                  provinceName: provinceName,
+                  location: {
+                    pointx: res.longitude,
+                    pointy: res.latitude,
+                    address: address,
+                    areaCode:areaCode,
+                    cityCode:cityCode
+                  }
+                })
+                res.address = address;
+                res.areaCode = areaCode;
+                res.cityCode = cityCode;
+                res.cityName = cityName;
+                res.provinceName = provinceName;
+                that.getStoreList();
+                that.cacheLocation(res);
+              },
+            });
+          }
         });
       }
-      
     });
-
-
-    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   }
 })
