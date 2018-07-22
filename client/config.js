@@ -4,9 +4,9 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 var host = 'https://gvxbkhpr.qcloud.la';
-var myHost = 'https://bewicode.com/selweb';
+//var myHost = 'https://bewicode.com/selweb';
 //var myHost = 'http://172.20.10.2:9001';
-//var myHost = 'http://192.168.1.104:9001';
+var myHost = 'http://192.168.1.104:9001';
 var config = {
 
     qqMapKey: 'XUEBZ-DY2CP-FMTDJ-V5C2R-BY32K-NIBTX',
@@ -32,6 +32,8 @@ var config = {
         saveStoreInfo: `${myHost}/drugstore/saveStoreInfo`,
 
         saveInstoreInfo: `${myHost}/instore/saveInstore`,
+
+        todayInstoreInfo: `${myHost}/instore/todayInstoreInfo`,
 
         uploadFile: `${myHost}/file/upload`,
 

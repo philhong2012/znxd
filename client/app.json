@@ -12,6 +12,7 @@
     "pages/index/index",
     "pages/addCgi/addCgi",
     "pages/location/location"
+
     
   ],
   "window": {

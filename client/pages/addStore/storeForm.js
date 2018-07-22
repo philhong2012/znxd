@@ -71,6 +71,7 @@ Page({
       success: function (res) {
         if ('001' == res.data.code) {
           util.showSuccess('保存成功');
+          wx.navigateTo({ url: '../location/location' });
         } else {
           util.showModel('警告', res.data.message);
         }

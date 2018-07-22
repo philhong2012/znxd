@@ -59,6 +59,11 @@ Page({
 
 
   formSubmit:function(e) {
+    if (typeof this.data.files === 'undefined'
+       || this.data.files.length == 0 ) {
+      util.showModel('警告', '请拍照上传！');
+    } else {
+
     console.log(e);
     //if(e.detail.target.id === 'saveAnd')
     this.setData(e.detail.value);
@@ -84,6 +89,7 @@ Page({
         }
       }
     });
+    }
   },
 
   goToStoreList:function() {

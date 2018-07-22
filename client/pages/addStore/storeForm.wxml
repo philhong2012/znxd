@@ -38,7 +38,7 @@
         <view class="weui-label">月营业额</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='monthAmt' value="{{monthAmt}}" placeholder="请输入月营业额" />
+        <input class="weui-input" name='monthAmt' type='digit' value="{{monthAmt}}" placeholder="请输入月营业额" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -46,7 +46,7 @@
         <view class="weui-label">所在省份</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='provinceName' value="{{provinceName}}" placeholder="" />
+        <input class="weui-input" name='provinceName'  disabled='true'  value="{{provinceName}}" placeholder="" />
       </view>
       <!-- <view class="weui-cell__bd">
         <picker value="{{provinceIndex}}" range="{{provinceItems}}" bindchange="onProvinceChanged">
@@ -64,7 +64,7 @@
         </picker>
       </view> -->
       <view class="weui-cell__bd">
-        <input class="weui-input" name='cityName' value="{{cityName}}" placeholder="" />
+        <input class="weui-input" name='cityName'  disabled='true'  value="{{cityName}}" placeholder="" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -72,7 +72,7 @@
         <view class="weui-label">经度坐标</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='piontx' value="{{pointx}}" placeholder="" />
+        <input class="weui-input" name='piontx'  disabled='true'  value="{{pointx}}" placeholder="" />
       </view>
     </view>
      <view class="weui-cell weui-cell_input">
@@ -80,7 +80,7 @@
         <view class="weui-label">纬度坐标</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='pointy' value="{{pointy}}" placeholder="" />
+        <input class="weui-input" name='pointy'  disabled='true'  value="{{pointy}}" placeholder="" />
       </view>
     </view>
      <view class="weui-cell weui-cell_input">
@@ -88,7 +88,7 @@
         <view class="weui-label">药店位置</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='address' value="{{address}}" placeholder="" />
+        <input class="weui-input" name='address' disabled='true'  value="{{address}}" placeholder="" />
       </view>
     </view>
      <view class="weui-cell weui-cell_input">
@@ -96,7 +96,7 @@
         <view class="weui-label">OTC代表</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='sales' value="{{sales}}" placeholder="" />
+        <input class="weui-input" name='sales' disabled='true'  value="{{sales}}" placeholder="" />
       </view>
     </view>
   </view>

@@ -9,15 +9,15 @@
    <input class="weui-input" name="fpassword" value='{{fpassword}}' type="password"  placeholder="登录密码" auto-focus></input>
 </view>
 
-<view class="section">
+<!-- <view class="section">
    <input class="weui-input" type="text"  placeholder="随访人员" auto-focus></input>
-</view>
+</view> -->
 
-<view>
+<!-- <view>
   <picker bindchange="onMonitorTypeChanged" placeholder="巡店模式" value="{{monitorTypeIndex}}" range="{{monitorType}}">
     <button type="default">寻店模式：{{monitorType[monitorTypeIndex]}}</button>
   </picker>
-</view>
+</view> -->
 
 <view class="section">
    <button form-type='submit' class="weui-btn" type="primary">登录</button>

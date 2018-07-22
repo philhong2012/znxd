@@ -37,6 +37,29 @@ Page({
     });
   },
 
+
+  todayInstoreInfo:function() {
+    
+    var that = this;
+    var loginId = that.data.user.floginid;
+    wx.request({
+      url: config.service.todayInstoreInfo + '/' + loginId,
+      data: null,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data)
+        if ('001' == res.data.code) {
+          //wx.navigateTo({ url: '../location/location' });
+          var instoreList = res.data.message;
+          that.setData({instoreList:instoreList});
+        }
+      }
+    });
+  },
+
   switchflowChange:function(e) {
     //console.log('switch 发生 change 事件，携带值为', e.detail.value)
     this.setData({ hideFollwerInput: e.detail.value });
@@ -49,22 +72,28 @@ Page({
       floginid:this.data.user.floginid,
       areaCode:this.data.areaCode
     }
-    wx.request({
-      url: config.service.saveInstoreInfo,
-      data: data,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      method: 'POST',
-      success: function (res) {
-        console.log(res.data)
-        if ('001' == res.data.code) {
-          wx.navigateTo({
-            url: '../displayInfo/displayInfo',
-          });
+
+    if (typeof this.data.files === 'undefined') {
+      util.showModel('警告', '请拍照上传!');
+    } else {
+
+      wx.request({
+        url: config.service.saveInstoreInfo,
+        data: data,
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: 'POST',
+        success: function (res) {
+          console.log(res.data)
+          if ('001' == res.data.code) {
+            wx.navigateTo({
+              url: '../displayInfo/displayInfo',
+            });
+          }
         }
-      }
-    });
+      });
+    }
 
   
   },
