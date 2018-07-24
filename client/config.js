@@ -6,7 +6,8 @@
 var host = 'https://gvxbkhpr.qcloud.la';
 //var myHost = 'https://bewicode.com/selweb';
 //var myHost = 'http://172.20.10.2:9001';
-var myHost = 'http://192.168.1.104:9001';
+//var myHost = 'http://192.168.1.104:9001';
+var myHost = 'http://192.168.17.119:9001';
 var config = {
 
     qqMapKey: 'XUEBZ-DY2CP-FMTDJ-V5C2R-BY32K-NIBTX',

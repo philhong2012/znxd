@@ -111,18 +111,23 @@ Page({
   },
 
   uploadToServer:function() {
-    var tempFilePaths = this.data.files;
+    var that = this;
+    var tempFilePaths = that.data.files;
     wx.uploadFile({
       url: config.service.uploadFile,
       filePath: tempFilePaths[0],
       name: 'uploadFiles',
       formData: {
-        'user': 'test'
+        'loginId': that.data.loginid
       },
       success: function (res) {
         var data = res.data
-        if('001' === data.code) {
-          that.setData({ imgName:data.message});
+        var jsonData = JSON.parse(data);
+        console.log(res);
+        if ('001' === jsonData.code) {
+          //console.log(res);
+          //console.log(data.message[0]);
+          that.setData({ imgName: jsonData.message[0] });
         }
         //do something
       }

@@ -66,12 +66,14 @@ Page({
   },
 
   enter: function() {
-    var data = {
+  var that =this;
+  that.setData({
+      cid:null,
       dsCode:this.data.dsCode2,
       dsName:this.data.cname,
       floginid:this.data.user.floginid,
       areaCode:this.data.areaCode
-    }
+    });
 
     if (typeof this.data.files === 'undefined') {
       util.showModel('警告', '请拍照上传!');
@@ -79,7 +81,7 @@ Page({
 
       wx.request({
         url: config.service.saveInstoreInfo,
-        data: data,
+        data: that.data,
         header: {
           'content-type': 'application/json' // 默认值
         },
@@ -124,18 +126,23 @@ Page({
 
 
   uploadToServer: function () {
-    var tempFilePaths = this.data.files;
+    var that = this;
+    var tempFilePaths = that.data.files;
     wx.uploadFile({
       url: config.service.uploadFile,
       filePath: tempFilePaths[0],
       name: 'uploadFiles',
       formData: {
-        'user': 'test'
+        'loginId': that.data.user.floginid
       },
       success: function (res) {
         var data = res.data
-        if ('001' === data.code) {
-          that.setData({ imgName: data.message });
+        var jsonData = JSON.parse(data);
+        console.log(res);
+        if ('001' === jsonData.code) {
+          //console.log(res);
+          //console.log(data.message[0]);
+          that.setData({ imgName: jsonData.message[0] });
         }
         //do something
       }
