@@ -75,9 +75,9 @@ Page({
       areaCode:this.data.areaCode
     });
 
-    if (typeof this.data.files === 'undefined') {
+    /*if (typeof this.data.files === 'undefined') {
       util.showModel('警告', '请拍照上传!');
-    } else {
+    } else {*/
 
       wx.request({
         url: config.service.saveInstoreInfo,
@@ -95,7 +95,7 @@ Page({
           }
         }
       });
-    }
+    //}
 
   
   },
@@ -104,7 +104,7 @@ Page({
   chooseImage: function (e) {
     var that = this;
     wx.chooseImage({
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片

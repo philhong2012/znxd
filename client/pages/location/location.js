@@ -101,7 +101,7 @@ Page({
         wx.getLocation({
           success: function(res) {
             //that.setLocation(res);
-
+            console.log("get location using qqmapsdk...")
             qqmapsdk.reverseGeocoder({
               location: {
                 latitude: res.latitude,
@@ -136,6 +136,9 @@ Page({
                 that.cacheLocation(res);
               },
             });
+          },
+          fail:function(errMsg) {
+            console.log(errMsg);
           }
         });
       }

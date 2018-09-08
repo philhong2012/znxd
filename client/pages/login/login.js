@@ -47,7 +47,7 @@ Page({
       },
       method:'POST',
       success: function (res) {
-        //console.log(res.data)
+        console.log(res);
         wx.setStorage({
           key: 'user',
           data: res.data.message,
@@ -56,10 +56,13 @@ Page({
         //清除位置缓存
         wx.removeStorage({key:'location'});
         if('001' == res.data.code) {
+          
           wx.navigateTo({ url: '../location/location' });
         } else {
           util.showModel('警告','用户名获密码错误');
         }
+      },fail:function() {
+        console.log("登陆失败");
       }
     })
   },
@@ -68,7 +71,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log("get user cache to load user account and psw!");
+    var that = this;
+    util.getCache('user', function (res) {
+      that.setData({ floginid: res.data.floginid, fpassword: res.data.fpassword });
+    });
   },
 
   /**

@@ -23,12 +23,35 @@ Page({
     storeNum:null
   },
 
+  getDrugInfo: function () {
+    var that = this;
+    //获取数据，调用后台，成功后，进入功能首页
+    //wx.navigateTo({ url:'../location/location'});
+    wx.request({
+      url: config.service.getDrugInfo + '/' + that.data.drugBcode,
+      data: null,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data)
+        if ('001' == res.data.code) {
+          var drugInfo = res.data.message;
+          that.setData({ drugName: drugInfo.cname, drugCode: drugInfo.drupCode});
+        }
+      }
+    });
+  },
+
+
   scan:function() {
     var that = this;
     wx.scanCode({
       success: (res) => {
         console.log(res);
         that.setData({drugBcode:res.result});
+        that.getDrugInfo();
       }
     })
   },
@@ -138,7 +161,7 @@ Page({
   chooseImage: function (e) {
     var that = this;
     wx.chooseImage({
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片

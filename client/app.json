@@ -1,6 +1,6 @@
 {
   "pages": [
-  
+
 "pages/login/login",
        
         "pages/displayInfo/displayInfo",
@@ -19,7 +19,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "智能巡店",
+    "navigationBarTitleText": "康侨巡店系统",
     "navigationBarTextStyle": "black"
   }
 }

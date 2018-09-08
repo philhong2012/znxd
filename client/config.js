@@ -6,11 +6,11 @@
 var host = 'https://gvxbkhpr.qcloud.la';
 //var myHost = 'https://bewicode.com/selweb';
 //var myHost = 'http://172.20.10.2:9001';
-//var myHost = 'http://192.168.1.104:9001';
-var myHost = 'http://192.168.17.119:9001';
+//var myHost = 'http://192.168.1.104:9001/';
+var myHost = 'https://gdkqgz.com/selweb';
 var config = {
 
-    qqMapKey: 'XUEBZ-DY2CP-FMTDJ-V5C2R-BY32K-NIBTX',
+    qqMapKey: '46WBZ-2MU62-6WUUO-CLRU4-QIUM6-HRFRI',
 
     // 下面的地址配合云端 Demo 工作
     service: {
@@ -35,6 +35,8 @@ var config = {
         saveInstoreInfo: `${myHost}/instore/saveInstore`,
 
         todayInstoreInfo: `${myHost}/instore/todayInstoreInfo`,
+
+        getDrugInfo: `${myHost}/drugInfo/drugInfoByCode`,
 
         uploadFile: `${myHost}/file/upload`,
 
