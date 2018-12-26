@@ -20,6 +20,7 @@ Page({
   },
 
   formSubmit: function (e) {
+    console.log('you should delete some letters then fill in full login name to login in when in weixin develop tools,otherwise,the form submit event will not trigger');
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     this.setData(e.detail.value);
     this.login();

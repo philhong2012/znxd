@@ -10,7 +10,7 @@ Page({
    */
   data: {
     cname:"",
-    levelItems:['A','B','C'],
+    levelItems:['连锁门店','单体药店','医疗药店'],
     destFlagItems:['是','否'],
     monthAmt:null,
     // provinceItems: [{ provinceCode: '', provinceName: '广东省' }, { provinceCode: 'B', provinceName: '' }, { provinceCode: 'C', provinceName: '' }],
