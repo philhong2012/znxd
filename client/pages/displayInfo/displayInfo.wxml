@@ -1,5 +1,5 @@
 <!--pages/checkRecord/checkRecord.wxml-->
-
+<view class='mask' hidden='{{maskFlag}}'></view>
 <form bindsubmit="formSubmit" bindreset="formReset">
 
   <view class="weui-cells weui-cells_after-title">
@@ -8,7 +8,7 @@
         <view class="weui-label">药品条码</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name="drugBcode" value="{{drugBcode}}" placeholder="请输入药品条码" />
+        <input class="weui-input" name="drugBcode" value="{{drugBcode}}" bindblur='onDrugBcodeBlur' placeholder="请输入药品条码" />
       </view>
       <view class="weui-cell__ft">
         <view class="weui-vcode-btn">
@@ -21,7 +21,7 @@
         <view class="weui-label">药品编码</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='drugCode' value="{{drugCode}}" placeholder="请输入药品编码" />
+        <input class="weui-input" name='drugCode'  value="{{drugCode}}" bindblur='onDrugCodeBlur' placeholder="请输入药品编码" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -29,7 +29,7 @@
         <view class="weui-label">药品名称</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='drugName' value="{{drugName}}" placeholder="请输入药品名称" />
+        <input class="weui-input" disabled='true' name='drugName' value="{{drugName}}" placeholder="请输入药品名称" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -37,7 +37,7 @@
         <view class="weui-label">批号</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='durgNumb' value="{{drugNumb}}" placeholder="请输入批号" />
+        <input class="weui-input" name='drugNumb' value="{{drugNumb}}" placeholder="请输入批号" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -126,5 +126,6 @@
     <button class='weui-btn' data-qqq='qqq' data-eee='eee' abc='abc' id="btnSaveAndContinue" form-type='submit' type='primary'>保存继续采集</button>
     <button class='weui-btn' type='default' bindtap='goToStoreList'>进入其他店铺</button>
     <button class='weui-btn' id="btnSaveAndExit" type='default' form-type='submit'>保存退出</button>
+    <button class='weui-btn' id="btnExit" type='default' bindtap='exit'>直接退出</button>
   </view>
 </form>

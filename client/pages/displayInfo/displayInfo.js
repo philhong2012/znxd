@@ -20,15 +20,24 @@ Page({
     drugName:null,
     drugNumb:null,
     drugPrice:null,
-    storeNum:null
+    storeNum:null,
+    maskFlag:true
   },
 
-  getDrugInfo: function () {
+  drugInfoByCode: function (codeType) {
     var that = this;
     //获取数据，调用后台，成功后，进入功能首页
-    //wx.navigateTo({ url:'../location/location'});
+    //wx.navigateTo(url:'../location/location'});
+    var url;
+    if(codeType == 1) {
+      //bcode to search
+      url = config.service.drugInfoByCode + '/' + that.data.drugBcode;
+    } else {
+      //code to search
+      url = config.service.drugInfoByCode2 + '/' + that.data.drugCode;
+    }
     wx.request({
-      url: config.service.getDrugInfo + '/' + that.data.drugBcode,
+      url: url,
       data: null,
       header: {
         'content-type': 'application/json' // 默认值
@@ -38,11 +47,16 @@ Page({
         console.log(res.data)
         if ('001' == res.data.code) {
           var drugInfo = res.data.message;
-          that.setData({ drugName: drugInfo.cname, drugCode: drugInfo.drupCode});
+          if(typeof drugInfo != 'undefined') {
+            that.setData({ drugName: drugInfo.cname, drugCode: drugInfo.drupCode,drugBcode:drugInfo.drugBcode});
+          }
         }
       }
     });
   },
+
+
+
 
 
   scan:function() {
@@ -51,7 +65,7 @@ Page({
       success: (res) => {
         console.log(res);
         that.setData({drugBcode:res.result});
-        that.getDrugInfo();
+        that.drugInfoByCode(1);
       }
     })
   },
@@ -59,7 +73,7 @@ Page({
   takePhoto:function() {
     wx.chooseImage({
       count: 2, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
@@ -69,30 +83,84 @@ Page({
     })
   },
 
+  onDrugBcodeBlur:function(e) {
+    //console.log(e);
+    this.setData({ drugBcode: e.detail.value});
+    this.drugInfoByCode(1);
+
+  },
+
+  onDrugCodeBlur: function (e) {
+    //console.log(e);
+    this.setData({ drugCode: e.detail.value });
+    this.drugInfoByCode(2);
+
+  },
+
+
+
   saveExit:function() {
     //console.log('save exit');
     //清除位置缓存
     wx.removeStorage({ key: 'location' });
     wx.removeStorage({ key: 'store' });
-    wx.removeStorage({ key: 'user' });
-    wx.navigateTo({
-      url: '../login/login',
-    });
+    //wx.removeStorage({ key: 'user' });
+    //wx.navigateTo({url: '../login/login',});
+    wx.navigateTo({ url: '../location/location' })
+  },
+
+  clear:function() {
+    this.setData( 
+      {
+        files: [],
+        imgName: '',
+        dispSurfItems: [1, 2, 3, 4],
+        dispSurfIndex: null,
+        dispPosiItems: ['优', '良', '中', '差'],
+        dispPosiIndex: null,
+        drugBcode: null,
+        drugCode: null,
+        drugName: null,
+        drugNumb: '',
+        drugPrice: null,
+        storeNum: null,
+        maskFlag: true
+      }
+    );
   },
 
 
-  formSubmit:function(e) {
-    if (typeof this.data.files === 'undefined'
-       || this.data.files.length == 0 ) {
-      util.showModel('警告', '请拍照上传！');
-    } else {
+  exit: function () {
+    //console.log('save exit');
+    //清除位置缓存
+    wx.removeStorage({ key: 'location' });
+    wx.removeStorage({ key: 'store' });
+    //wx.removeStorage({ key: 'user' });
+    wx.navigateTo({url: '../login/login',});
+    //wx.navigateTo({ url: '../location/location' })
+  },
 
-    console.log(e);
+
+  setMaskFlag: function (flag) {
+    this.setData({
+      maskFlag: flag
+    })
+  },
+
+  formSubmit:function(e) {
+    // if (typeof this.data.files === 'undefined'
+    //    || this.data.files.length == 0 ) {
+    //   util.showModel('警告', '请拍照上传！');
+    // } else {
+    
+    console.log(e);    
+    this.setMaskFlag(false);
     //if(e.detail.target.id === 'saveAnd')
     this.setData(e.detail.value);
     var that = this;
     //获取数据，调用后台，成功后，进入功能首页
     //wx.navigateTo({ url:'../location/location'});
+
     wx.request({
       url: config.service.saveDisplayInfo,
       data: that.data,
@@ -104,15 +172,21 @@ Page({
         //console.log(res);
         if ('001' == res.data.code) {
           util.showSuccess('保存成功');
+         
           if(e.detail.target.id === 'btnSaveAndExit') {
             that.saveExit();
-          }
+          } else if (e.detail.target.id === 'btnExit') {
+            that.exit();
+          } else if (e.detail.target.id === 'btnSaveAndContinue')
+            that.clear();
         } else {
           util.showModel('出错啦',res.data.message);
         }
+        that.setMaskFlag(true);
       }
+      
     });
-    }
+    //}
   },
 
   goToStoreList:function() {

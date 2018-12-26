@@ -11,6 +11,7 @@ Page({
     cid:"",
     dsCode:"",
     cname:"",
+    maskFlag:true,
     user:{}
   },
 
@@ -60,12 +61,21 @@ Page({
     });
   },
 
+  setMaskFlag: function (flag) {
+    this.setData({
+      maskFlag: flag
+    })
+  },
+
+
   switchflowChange:function(e) {
     //console.log('switch 发生 change 事件，携带值为', e.detail.value)
     this.setData({ hideFollwerInput: e.detail.value });
   },
 
+
   enter: function() {
+  this.setMaskFlag(false);
   var that =this;
   that.setData({
       cid:null,
@@ -87,6 +97,7 @@ Page({
         },
         method: 'POST',
         success: function (res) {
+          that.setMaskFlag(true);
           console.log(res.data)
           if ('001' == res.data.code) {
             wx.navigateTo({

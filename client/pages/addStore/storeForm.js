@@ -21,6 +21,7 @@ Page({
     pointx:'',
     pointy:'',
     sales:'',
+    saleAndLoginId:'',
     levelIndex:0,
     destFlagIndex:0
   
@@ -103,7 +104,8 @@ Page({
     wx.getStorage({
       key: 'user',
       success: function (res) {
-        that.setData({ sales: res.data.fname + '(' + res.data.floginid + ')' });
+        //that.setData({ sales: res.data.fname + '(' + res.data.floginid + ')' });
+        that.setData({ sales: res.data.fname,saleDbzh:res.data.floginid});
       }
     });
     wx.getStorage({

@@ -96,7 +96,7 @@
         <view class="weui-label">OTC代表</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" name='sales' disabled='true'  value="{{sales}}" placeholder="" />
+        <input class="weui-input" name='saleAndLoginId' disabled='true'  value="{{sales}}({{saleDbzh}})" placeholder="" />
       </view>
     </view>
   </view>

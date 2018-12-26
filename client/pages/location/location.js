@@ -45,11 +45,24 @@ Page({
         console.log(res.data)
         if ('001' == res.data.code) {
           that.setData({
-            storeList: res.data.message
+            storeList: res.data.message,
+            allStoreList:res.data.message
           });
         }
       }
     })
+  },
+
+  onSearchInput:function(e) {
+    if(e.detail.value != '') {
+      var filtered = this.data.allStoreList.filter(function(item,index,array) {
+          return item.cname.indexOf(e.detail.value) > -1;
+      });
+      this.setData({storeList:filtered});
+    } else {
+      this.setData({ storeList: this.data.allStoreList });
+    }
+
   },
 
   /**

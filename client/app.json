@@ -1,17 +1,22 @@
 {
   "pages": [
+ 
+    "pages/login/login",
+    "pages/inStore/inStore",
+    "pages/location/location",
+    "pages/displayInfo/displayInfo",
 
-"pages/login/login",
+
        
-        "pages/displayInfo/displayInfo",
+       
 
-      "pages/inStore/inStore",
+
     "pages/addStore/storeForm",
    
 
     "pages/index/index",
-    "pages/addCgi/addCgi",
-    "pages/location/location"
+    "pages/addCgi/addCgi"
+
 
     
   ],

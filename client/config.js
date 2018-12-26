@@ -6,7 +6,8 @@
 var host = 'https://gvxbkhpr.qcloud.la';
 //var myHost = 'https://bewicode.com/selweb';
 //var myHost = 'http://172.20.10.2:9001';
-//var myHost = 'http://192.168.1.104:9001/';
+//var myHost = 'http://localhost:9001/selweb';
+//var myHost = 'http://192.168.1.104:9001/selweb';
 var myHost = 'https://gdkqgz.com/selweb';
 var config = {
 
@@ -36,7 +37,9 @@ var config = {
 
         todayInstoreInfo: `${myHost}/instore/todayInstoreInfo`,
 
-        getDrugInfo: `${myHost}/drugInfo/drugInfoByCode`,
+      drugInfoByCode: `${myHost}/drugInfo/drugInfoByCode`,
+
+      drugInfoByCode2: `${myHost}/drugInfo/drugInfoByCode2`,
 
         uploadFile: `${myHost}/file/upload`,
 

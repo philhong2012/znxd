@@ -39,6 +39,10 @@ var showModel = (title, content) => {
     })
 }
 
+var showMask = (data,flag) => {
+  
+}
+
 var cacheData = (key,value) => {
   //存入缓存
   wx.setStorage({

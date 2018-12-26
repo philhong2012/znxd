@@ -8,8 +8,10 @@
     <button class="weui-btn" type="primary" plain="true" bindtap='goToStoreForm'>新增药店</button> 
      <button class="weui-btn" type="primary" plain="true" bindtap='refreshStore'>刷新药店</button>        
  </view>
-
-   <view class="weui-cells weui-cells_after-title" wx:for="{{storeList}}" wx:for-index="idx" wx:for-item="store">
+<view class='weui-cell__bd'>
+  <input catchlongtap='weui-input' placeholder='请输入药店名称查询' bindinput='onSearchInput'></input>
+</view>
+   <view class="weui-cells weui-cells_after-title" wx:for="{{storeList}}" wx:for-index="idx" wx:for-item="store" wx:key="cid">
             <navigator url="../inStore/inStore?id={{store.cid}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd">{{idx + 1}}-{{store.cname}}</view>
                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
