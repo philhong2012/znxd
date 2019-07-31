@@ -21,6 +21,7 @@ Page({
     drugNumb:null,
     drugPrice:null,
     storeNum:null,
+    seqNumb:null,
     maskFlag:true
   },
 
@@ -66,6 +67,16 @@ Page({
         console.log(res);
         that.setData({drugBcode:res.result});
         that.drugInfoByCode(1);
+      }
+    })
+  },
+  //扫描监管码
+  scanMornitorCode: function () {
+    var that = this;
+    wx.scanCode({
+      success: (res) => {
+        console.log(res);
+        that.setData({ seqNumb: res.result });
       }
     })
   },
@@ -124,6 +135,7 @@ Page({
         drugNumb: '',
         drugPrice: null,
         storeNum: null,
+        seqNumb:null,
         maskFlag: true
       }
     );

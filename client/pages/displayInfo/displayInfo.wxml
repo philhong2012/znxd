@@ -83,11 +83,11 @@
         <view class="weui-label">监管码</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" value="" placeholder="请输入监管码" />
+        <input class="weui-input" name="seqNumb" value="{{seqNumb}}" placeholder="请输入监管码" />
       </view>
       <view class="weui-cell__ft">
         <view class="weui-vcode-btn">
-          <button class="weui-btn" bindtap='scan' type="primary">识别</button>
+          <button class="weui-btn" bindtap='scanMornitorCode' type="primary">识别</button>
         </view>
       </view>
     </view>
